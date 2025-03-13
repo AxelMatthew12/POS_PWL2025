@@ -69,7 +69,8 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    // Menambahkan lokasi pasti untuk menyesuaikan waktu 
+    'timezone' => env('APP_TIMEZONE','Asia/jakarta'),
 
     /*
     |--------------------------------------------------------------------------
