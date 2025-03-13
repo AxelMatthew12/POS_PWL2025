@@ -29,12 +29,13 @@ Route::prefix('products')->group(function(){
     Route::get('/category/home-care',[CategoryController::class,'homeCare']);
     Route::get('/category/baby-kid',[CategoryController::class,'babykid']);
 });
-Route::prefix('users')->group(function(){
-    Route::get('/user/{id}/name/{name}',[UserController::class,'user']);
-    Route::get('/transactionid/{id}/namaproduct/{product}',[UserController::class,'transaction']);
-});
+// Route::prefix('users')->group(function(){
+//     Route::get('/user/{id}/name/{name}',[UserController::class,'user']);
+//     Route::get('/transactionid/{id}/namaproduct/{product}',[UserController::class,'transaction']);
+// });
 
 Route::get('/level', [LevelController::class,'index']);
 Route::get('/kategori',[KategoriController::class, 'index']);
 
+Route::get('/user', [UserController::class, 'index']);
 
