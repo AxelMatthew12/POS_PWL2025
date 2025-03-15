@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\UserModel;
+use App\Models\Usermodel;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -14,11 +14,15 @@ class UserController extends Controller
 
         // Praktikum 2.1
     // // $user = UserModel::findOr(20,['username','nama'], function () {
-    // //     abort(404);
+    // //     abort(404);aa
     // });
 
     // Pratikum 2.2
-        $user = Usermodel::where('username','manager9')->firstOrFail();
+
+    // Praktikum 2.3
+        $user = Usermodel::where('level_id', 2)->count();
+        
+        
     return view('user',['data'=> $user]);
     }
 
