@@ -12,9 +12,13 @@ class UserController extends Controller
 
     public function index() {
 
-    $user = UserModel::findOr(20,['username','nama'], function () {
-        abort(404);
-    });
+        // Praktikum 2.1
+    // // $user = UserModel::findOr(20,['username','nama'], function () {
+    // //     abort(404);
+    // });
+
+    // Pratikum 2.2
+        $user = Usermodel::where('username','manager9')->firstOrFail();
     return view('user',['data'=> $user]);
     }
 
