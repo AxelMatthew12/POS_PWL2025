@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LevelModel;
 use Illuminate\Http\Request;
 use App\Models\Usermodel;
 use Illuminate\Support\Facades\Hash;
@@ -67,10 +68,10 @@ class UserController extends Controller
 
         // dd($user->isDirty());
 
-        $user = Usermodel::with('level')->get();
+        $user = LevelModel::with('user')->get();
 
-        dd($user);
-        // return view('user', ['data' => $user]);
+        // dd($user);
+        return view('user', ['data' => $user]);
   
     }
 
