@@ -20,8 +20,14 @@ class UserController extends Controller
     // Pratikum 2.2
 
     // Praktikum 2.3
-        $user = Usermodel::where('level_id', 2)->count();
+        // $user = Usermodel::where('level_id', 2)->count();
         
+        $user = Usermodel::firstOrNew(
+            [
+                'username'=> 'manager',
+                'nama'=> 'Manager',
+            ],
+        );
         
     return view('user',['data'=> $user]);
     }
