@@ -25,7 +25,7 @@ class LevelController extends Controller
 
         $activeMenu = 'level'; // set menu yang sedang aktif
 
-        
+
 
         return view('level.index', [
             'breadcrumb' => $breadcrumb,

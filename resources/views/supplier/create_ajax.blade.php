@@ -42,7 +42,7 @@
             rules: {
                 supplier_kode: {
                     required: true,
-                    minlength: 3,
+                    minlength: 1,
                     maxlength: 20
                 },
                 supplier_nama: {

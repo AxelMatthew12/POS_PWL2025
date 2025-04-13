@@ -18,5 +18,5 @@ class KategoriModel extends Model
         'kategori_nama',
     ];
 
-    public $timestamps = true; // Menggunakan timestamps (created_at & updated_at)
+    public $timestamps = false; // Menggunakan timestamps (created_at & updated_at) bila tidak di jadikan false
 }

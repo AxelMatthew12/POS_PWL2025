@@ -184,7 +184,7 @@ class SupplierController extends Controller
     {
         if ($request->ajax() || $request->wantsJson()) {
             $rules = [
-                'supplier_kode' => 'required|string|min:3|unique:m_supplier,supplier_kode',
+                'supplier_kode' => 'required|string|min:1|unique:m_supplier,supplier_kode',
                 'supplier_nama' => 'required|string|max:100',
                 'supplier_alamat' => 'required|string'
             ];

@@ -174,7 +174,7 @@ class KategoriController extends Controller
     {
         if ($request->ajax() || $request->wantsJson()) {
             $rules = [
-                'kategori_kode' => 'required|string|min:3|unique:m_kategori,kategori_kode',
+                'kategori_kode' => 'required|string|min:1|unique:m_kategori,kategori_kode',
                 'kategori_nama' => 'required|string|max:100',
             ];
 
