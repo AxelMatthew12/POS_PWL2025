@@ -20,7 +20,7 @@
     <form action="{{ url('/user/' . $user->user_id . '/update_ajax') }}" method="POST" id="form-edit">
         @csrf
         @method('PUT')
-        
+
         <div id="modal-master" class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -36,25 +36,25 @@
                             <option value="">- Pilih Level -</option>
                             @foreach($level as $l)
                                 <option value="{{ $l->level_id }}" {{ $l->level_id == $user->level_id ? 'selected' : '' }}>
-                                    {{ $l->level_nama }}
+                                    {{ $l->level_name }}
                                 </option>
                             @endforeach
                         </select>
                         <small id="error-level_id" class="error-text text-danger"></small>
                     </div>
-                    
+
                     <div class="form-group">
                         <label>Username</label>
                         <input type="text" name="username" id="username" class="form-control" value="{{ $user->username }}" required>
                         <small id="error-username" class="error-text text-danger"></small>
                     </div>
-                    
+
                     <div class="form-group">
                         <label>Nama</label>
                         <input type="text" name="nama" id="nama" class="form-control" value="{{ $user->nama }}" required>
                         <small id="error-nama" class="error-text text-danger"></small>
                     </div>
-                    
+
                     <div class="form-group">
                         <label>Password</label>
                         <input type="password" name="password" id="password" class="form-control">
@@ -69,7 +69,7 @@
             </div>
         </div>
     </form>
-    
+
     <script>
         $(document).ready(function() {
             $("#form-edit").validate({

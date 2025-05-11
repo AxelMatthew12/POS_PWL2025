@@ -5,9 +5,10 @@
         <div class="card-header">
             <h3 class="card-title">{{ $page->title }}</h3>
             <div class="card-tools">
-                {{-- <a class="btn btn-sm btn-primary mt-1" href="{{ url('supplier/create') }}">Tambah</a> --}}
-                <button onclick="modalAction('{{ url('/supplier/create_ajax') }}')" class="btn btn-sm btn-primary mt-1">Tambah</button>
-
+                <button onclick="modalAction('{{ url('/supplier/import') }}')" class="btn btn-info">Import Supplier</button>
+                <a href="{{ url('/supplier/export_excel') }}" class="btn btn-primary"><i class="fa fa-file- excel"></i> Export Supplier</a>
+{{--                <a href="{{ url('/supplier/export_pdf') }}" class="btn btn-warning" target="_blank"><i class="fa fa-file- pdf"></i> Export Supplier</a>--}}
+                <button onclick="modalAction('{{ url('/supplier/create_ajax') }}')" class="btn btn-success">Tambah Data</button>
             </div>
         </div>
         <div class="card-body">
@@ -19,35 +20,35 @@
             @endif
             <table class="table table-bordered table-striped table-hover table-sm" id="table_supplier">
                 <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Kode</th>
-                        <th>Nama</th>
-                        <th>Alamat</th>
-                        <th>Aksi</th>
-                    </tr>
+                <tr>
+                    <th>ID</th>
+                    <th>Kode</th>
+                    <th>Nama</th>
+                    <th>Alamat</th>
+                    <th>Aksi</th>
+                </tr>
                 </thead>
             </table>
         </div>
     </div>
     <div id="myModal" class="modal fade animate shake" tabindex="-1" role="dialog" data- backdrop="static"
-    data-keyboard="false" data-width="75%" aria-hidden="true">
-</div>
+         data-keyboard="false" data-width="75%" aria-hidden="true">
+    </div>
 @endsection
 @push('css')
 @endpush
 @push('js')
     <script>
-         function modalAction(url = '') {
+        function modalAction(url = '') {
             $('#myModal').load(url, function() {
                 $('#myModal').modal('show');
             });
         }
 
-        var dataSupplier;
+        var tableSupplier;
 
         $(document).ready(function() {
-            dataSupplier = $('#table_supplier').DataTable({
+            tableSupplier = $('#table_supplier').DataTable({
                 processing: true,
                 serverSide: true, // Jika ingin menggunakan server-side processing
                 ajax: {
@@ -59,11 +60,11 @@
                     }
                 },
                 columns: [{
-                        data: "DT_RowIndex",
-                        className: "text-center",
-                        orderable: false,
-                        searchable: false
-                    }, // Kolom nomor urut
+                    data: "DT_RowIndex",
+                    className: "text-center",
+                    orderable: false,
+                    searchable: false
+                }, // Kolom nomor urut
                     {
                         data: "supplier_kode",
                         className: "",
@@ -87,7 +88,8 @@
                         className: "",
                         orderable: false,
                         searchable: false
-                    }]
+                    } // Tombol aksi
+                ]
             });
         });
     </script>

@@ -23,10 +23,10 @@ Route::post('/register', [AuthController::class, 'register'])->name('register.st
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [WelcomeController::class, 'index']);
-    
+
 
     Route::middleware(['authorize:ADM,MNG'])->group(function () {
-       
+
     // menampilkan halaman awal level
         Route::get('/level', [LevelController::class, 'index']);
         Route::post('/level/list', [LevelController::class, 'list']); // untuk list json datatables
@@ -43,10 +43,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::middleware(['authorize:STF,MNG'])->group(function () {
         Route::get('/kategori', [KategoriController::class, 'index']);
-    
+
         });
 
-   
+
 });
 
 
@@ -79,6 +79,9 @@ Route::group(['prefix' => 'user'], function () {
 
     Route::delete('/{id}', [UserController::class, 'destroy']); // menghapus data user
 
+    Route::get('/import', [UserController::class, 'import']);
+    Route::post('/import_ajax', [UserController::class, 'import_ajax']);
+
 });
 
 // untuk tabel m_level
@@ -104,11 +107,14 @@ Route::group(['prefix' => 'level'], function () {
     Route::delete('/{id}/delete_ajax', [LevelController::class, 'delete_ajax']);
 
     Route::delete('/{id}', [LevelController::class, 'destroy']); // menghapus data level
+
+    Route::get('/import', [LevelController::class, 'import']);
+    Route::post('/import_ajax', [LevelController::class, 'import_ajax']);
 });
 
 // untuk tabel m_kegtegori
 Route::group(['prefix' => 'kategori'], function () {
-   
+
     Route::post('/list', [KategoriController::class, 'list']);
     Route::get('/create', [KategoriController::class, 'create']);
     Route::post('/', [KategoriController::class, 'store']);
@@ -140,11 +146,16 @@ Route::group(['prefix' => 'supplier'], function () {
     Route::get('/{id}/delete_ajax', [SupplierController::class, 'confirm_ajax']);
     Route::delete('/{id}/delete_ajax', [SupplierController::class, 'delete_ajax']);
     Route::delete('/{id}', [SupplierController::class, 'destroy']);
+
+    Route::get('/import', [SupplierController::class, 'import']);
+    Route::post('/import_ajax', [SupplierController::class, 'import_ajax']);
+    Route::get('/export_excel', [SupplierController::class, 'export_excel']);
+    Route::get('/export_pdf', [SupplierController::class, 'export_pdf']);
 });
 
 // untuk tabel m_barang
 Route::group(['prefix' => 'barang'], function () {
-   
+
     Route::post('/list', [BarangController::class, 'list']);
     Route::get('/create', [BarangController::class, 'create']);
     Route::post('/', [BarangController::class, 'store']);
@@ -157,7 +168,11 @@ Route::group(['prefix' => 'barang'], function () {
     Route::put('/{id}/update_ajax', [BarangController::class, 'update_ajax']);
     Route::get('/{id}/delete_ajax', [BarangController::class, 'confirm_ajax']);
     Route::delete('/{id}/delete_ajax', [BarangController::class, 'delete_ajax']);
+    Route::get('/import',[BarangController::class, 'import']); #ajax form uplad excel
+    Route::post('/import_ajax', [BarangController::class, 'import_ajax']); #ajax import excel
     Route::delete('/{id}', [BarangController::class, 'destroy']);
+
+    Route::get('/export_excel',[BarangController::class, 'export_excel']);
 });
 
 
