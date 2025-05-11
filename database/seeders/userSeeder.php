@@ -20,21 +20,24 @@ class userSeeder extends Seeder
                 'level_id'=>1,
                 'username'=>'admin',
                 'nama'=>'Administrator',
-                'password' => Hash::make('12345'),
+                'password' => Hash::make('123456'),
+                'photo'=>'null',
             ],
             [
                 'user_id'=>2,
                 'level_id'=>2,
                 'username'=>'manager',
                 'nama'=>'Manager',
-                'password' => Hash::make('12345'),
+                'password' => Hash::make('123456'),
+                'photo'=>'null',
             ],
             [
                 'user_id'=>3,
                 'level_id'=>3,
                 'username'=>'staff',
                 'nama'=>'Staff/kasir',
-                'password' => Hash::make('12345'),
+                'password' => Hash::make('123456'),
+                'photo'=>'null',
             ],
         ];
         DB::table('m_user')->insert($data);
